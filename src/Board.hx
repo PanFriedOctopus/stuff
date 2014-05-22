@@ -110,6 +110,7 @@ class Board extends Sprite
 		urlLoader.load(new URLRequest("http://cse.asmsa.org/multiplayer/send_stat.php?name=vicTTT&statname=IP&statvalue="+ key +"&rand="+Math.random()));
 		
 		Timer.delay(checkIP, 1000);
+		trace("firststep");
 	}
 	
 	private function checkIP()
@@ -117,10 +118,12 @@ class Board extends Sprite
 		var urlLoader = new URLLoader();
 		urlLoader.load(new URLRequest("http://cse.asmsa.org/multiplayer/get_stat.php?name=vicTTT&statname=IP&rand="+Math.random()));
 		urlLoader.addEventListener(Event.COMPLETE, validateIP);
+		trace("secondstep");
 	}
 
 	private function validateIP(e:Event)
 	{
+		trace("thirdstep");
 		e.target.removeEventListener(Event.COMPLETE, validateIP);
 		var data:String = e.target.data;
 		//trace(data);
@@ -134,10 +137,11 @@ class Board extends Sprite
 			{
 				//trace("I MATCHED THE KEY");
 				player = new Player(ip);
+				players.add(player);
 			}
 		}
 		//if (player == null) trace("NULL");
-		//trace(player.getIP());
+		trace(player.getIP());
 		init();
 	}
 	
@@ -151,7 +155,7 @@ class Board extends Sprite
 		count++;
 		if (count % 60 == 0)
 		{
-			//trace("Update");
+			trace("Update");
 			communicateServer();
 		}
 	}
@@ -160,6 +164,7 @@ class Board extends Sprite
 	{
 		var p = new Player(ip);
 		players.add(p);
+		asignplayers();
 	}
 	
 	public function asignplayers()
@@ -168,6 +173,7 @@ class Board extends Sprite
 		{
 			if (kittybool = false) 
 			{
+				trace("dgagasdo");
 				p.setValue(1);
 				kittybool = true;
 			}
@@ -312,7 +318,7 @@ class Board extends Sprite
 	
 	public function act()
 	{	
-		trace(mousebool);
+		//trace(mousebool);
 		
 		
 		sendClick();
