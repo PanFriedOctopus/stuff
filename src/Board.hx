@@ -211,7 +211,7 @@ class Board extends Sprite
 		urlLoadclick.addEventListener(Event.COMPLETE, setBoard);
 		
 		var urlLoadwin = new URLLoader();
-		urlLoadwin.load(new URLRequest("http://cse.asmsa.org/multiplayer/get_stat.php?name=vicTTT&statname=y&rand=" + Math.random()));
+		urlLoadwin.load(new URLRequest("http://cse.asmsa.org/multiplayer/get_stat.php?name=vicTTT&statname=win&rand=" + Math.random()));
 		urlLoadwin.addEventListener(Event.COMPLETE, setwin);
 
 	}
@@ -242,6 +242,25 @@ class Board extends Sprite
 		Seven.activate(temp7);
 		Eight.activate(temp8);
 		Nine.activate(temp9);
+	}
+	
+	private function sendClick()
+	{
+		//trace("X: " + player.x + "  Y: " + player.y);
+
+		var urlSendclick = new URLLoader();
+		urlSendclick.load(new URLRequest("http://cse.asmsa.org/multiplayer/send_stat.php?name=vicTTT&statname=click&statvalue=" + One.value + " " + Two.value + "  " + Three.value + " " + Four.value + " " + Five.value + " " + Six.value + " " + Seven.value + " " + Eight.value + " " + Nine.value + "&rand=" + Math.random()));
+
+		var temp0 = 0;
+		var temp1 = 0;
+		
+		if (gameover0 = false) temp0 = 0;
+		if (gameover0 = true) temp0 = 1;
+		if (gameover1 = false) temp1 = 0;
+		if (gameover1 = true) temp1 == 1;
+		
+		var urlSendwin = new URLLoader();
+		urlSendwin.load(new URLRequest("http://cse.asmsa.org/multiplayer/send_stat.php?name=vicTTT&statname=win&statvalue=" + temp0 + " " +temp1+ "&rand=" + Math.random()));
 	}
 	
 	private function setwin(e:Event)
@@ -305,6 +324,8 @@ class Board extends Sprite
 				this.removeChild(wait);
 			}
 		}
+		
+		sendClick();
 		
 		checkwin();
 		if (gameover0 == true) win0();
