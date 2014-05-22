@@ -65,20 +65,16 @@ class Board extends Sprite
 		players = new List();
 		
 		sprite = new Sprite();
-		wait = new Sprite();
 		mousewin = new Sprite();
 		kittywin = new Sprite();
 		var img4 = new Bitmap(Assets.getBitmapData("img/catwins.png"));
 		var img3 = new Bitmap(Assets.getBitmapData("img/mousewins.png"));
-		var img2 = new Bitmap(Assets.getBitmapData("img/waiting.png"));
 		var img = new Bitmap(Assets.getBitmapData("img/board.png"));
 		sprite.addChild(img);
-		wait.addChild(img2);
 		mousewin.addChild(img3);
 		kittywin.addChild(img4);
 		//trace("DUMMB");
 		this.addChild(sprite);
-		this.addChild(wait);
 		
 		this.x = 0;
 		this.y = 0;
@@ -104,7 +100,6 @@ class Board extends Sprite
 		
 		gameover1 = false;
 		gameover0 = false;
-		waiting = true;
 		kittybool = false;
 		mousebool = false;
 		
@@ -318,14 +313,7 @@ class Board extends Sprite
 	public function act()
 	{	
 		trace(mousebool);
-		if (checkwait == true) 
-		{
-			if (mousebool == true && kittybool == true)
-			{
-				checkwait = false;
-				this.removeChild(wait);
-			}
-		}
+		
 		
 		sendClick();
 		if (mousebool == true && kittybool == true)

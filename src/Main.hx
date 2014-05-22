@@ -89,12 +89,6 @@ class Main extends Sprite
 		Lib.current.addChild(new Main());
 		
 	}
-	
-	public function iswaiting()
-	{
-		return board.waiting;
-	}
-	
 	public function act(e)
 	{
 		//trace("DAX IS A HOBBIT");
