@@ -147,6 +147,7 @@ class Board extends Sprite
 	
 	private function init()
 	{
+		trace("fourthstep");
 		Lib.current.stage.addEventListener(Event.ENTER_FRAME, update);
 	}
 	
@@ -155,7 +156,7 @@ class Board extends Sprite
 		count++;
 		if (count % 60 == 0)
 		{
-			trace("Update");
+			trace("Update(fith)");
 			communicateServer();
 		}
 	}
@@ -214,6 +215,7 @@ class Board extends Sprite
 		var urlLoadwin = new URLLoader();
 		urlLoadwin.load(new URLRequest("http://cse.asmsa.org/multiplayer/get_stat.php?name=vicTTT&statname=win&rand=" + Math.random()));
 		urlLoadwin.addEventListener(Event.COMPLETE, setwin);
+		trace("sixthstep");
 
 	}
 	
@@ -319,7 +321,7 @@ class Board extends Sprite
 	public function act()
 	{	
 		//trace(mousebool);
-		
+		//trace(kittybool);
 		
 		sendClick();
 		if (mousebool == true && kittybool == true)
