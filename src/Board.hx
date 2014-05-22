@@ -54,6 +54,7 @@ class Board extends Sprite
 	var mousebool:Bool;
 	
 	var key:Float;
+	var count:Int;
 	
 	var checkwait:Bool;
 	
@@ -105,6 +106,9 @@ class Board extends Sprite
 		mousebool = false;
 		
 		key = Math.random();
+		count = 0;
+		
+		Timer.delay(checkIP, 1000);
 	}
 	
 	private function checkIP()
@@ -133,6 +137,22 @@ class Board extends Sprite
 		}
 		//if (player == null) trace("NULL");
 		//trace(player.getIP());
+		init();
+	}
+	
+	private function init()
+	{
+		Lib.current.stage.addEventListener(Event.ENTER_FRAME, update);
+	}
+	
+	private function update(e:Event)
+	{
+		count++;
+		if (count % 60 == 0)
+		{
+			//trace("Update");
+			communicateServer();
+		}
 	}
 	
 	private function addPlayer(ip:String)
@@ -288,10 +308,8 @@ class Board extends Sprite
 		}
 		
 		checkwin();
-		if (gameover0 = true)
-			win0();
-		if (gameover1 = true)
-			win1();
+		if (gameover0 == true) win0();
+		if (gameover1 == true) win1();
 		
 		//if (gameover == true) trace ("through I mean hi");
 	}

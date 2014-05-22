@@ -68,7 +68,7 @@ class Square extends Sprite
 	public function markaskitty(e:MouseEvent) 
 	{
 		var tempbool = Main.game.iswaiting();
-		if (on == false && tempbool == false)
+		if (on == false /*&& tempbool == false*/)
 		{
 			on = true;
 			this.addChild(kitty);
@@ -80,7 +80,7 @@ class Square extends Sprite
 	public function markasmouse(e:MouseEvent) 
 	{
 		var tempbool = Main.game.iswaiting();
-		if (on == false && tempbool == false)
+		if (on == false /*&& tempbool == false*/)
 		{
 			on = true;
 			this.addChild(mouse);
@@ -93,7 +93,7 @@ class Square extends Sprite
 	public function activate(poop)
 	{
 		var tempbool = Main.game.iswaiting();
-		if (on == false && tempbool == false)
+		if (on == false /*&& tempbool == false*/)
 		{
 			on = true;
 			if (poop == "1")
