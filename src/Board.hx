@@ -317,7 +317,9 @@ class Board extends Sprite
 	
 	public function act()
 	{	
-		if (checkwait == true) {
+		trace(mousebool);
+		if (checkwait == true) 
+		{
 			if (mousebool == true && kittybool == true)
 			{
 				checkwait = false;
@@ -326,10 +328,12 @@ class Board extends Sprite
 		}
 		
 		sendClick();
-		
-		checkwin();
-		if (gameover0 == true) win0();
-		if (gameover1 == true) win1();
+		if (mousebool == true && kittybool == true)
+		{
+			checkwin();
+			if (gameover0 == true) win0();
+			if (gameover1 == true) win1();
+		}
 		
 		//if (gameover == true) trace ("through I mean hi");
 	}
