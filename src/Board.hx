@@ -61,6 +61,9 @@ class Board extends Sprite
 	public function new() 
 	{
 		super();
+		
+		players = new List();
+		
 		sprite = new Sprite();
 		wait = new Sprite();
 		mousewin = new Sprite();
@@ -108,6 +111,9 @@ class Board extends Sprite
 		key = Math.random();
 		count = 0;
 		
+		var urlLoader = new URLLoader();
+		urlLoader.load(new URLRequest("http://cse.asmsa.org/multiplayer/send_stat.php?name=vicTTT&statname=IP&statvalue="+ key +"&rand="+Math.random()));
+		
 		Timer.delay(checkIP, 1000);
 	}
 	
@@ -132,7 +138,7 @@ class Board extends Sprite
 			if (key != null && Std.parseFloat(key) == this.key)
 			{
 				//trace("I MATCHED THE KEY");
-				var player = new Player(ip);
+				player = new Player(ip);
 			}
 		}
 		//if (player == null) trace("NULL");
