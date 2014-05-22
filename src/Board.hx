@@ -290,27 +290,20 @@ class Board extends Sprite
 	public function win0()
 	{
 		this.addChild(mousewin);
-		checkwait = true;
 	}
 	public function win1()
 	{
 		this.addChild(kittywin);
-		checkwait = true;
-		var enemySpawn: Timer = new haxe.Timer(3500);
-		enemySpawn.run = function():Void
-		{
-			this.addChild(wait);
-			enemySpawn.stop();
-		}
 	}
 	
 	public function act()
 	{	
-		if (checkwait == true) 
-		if (mousebool == true && kittybool == true)
-		{
-			checkwait = false;
-			this.removeChild(wait);
+		if (checkwait == true) {
+			if (mousebool == true && kittybool == true)
+			{
+				checkwait = false;
+				this.removeChild(wait);
+			}
 		}
 		
 		checkwin();
